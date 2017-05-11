@@ -1,0 +1,33 @@
+
+
+############################################################
+# Dockerfile
+############################################################
+
+#base image
+FROM centos:7
+
+MAINTAINER Patrik Smeds
+
+ENV LANG C.UTF-8
+
+RUN yum -y update
+RUN yum -y upgrade
+RUN yum -y install git
+RUN yum -y install python
+RUN yum -y --enablerepo=extras install epel-release
+RUN yum -y install python-pip
+RUN pip install --upgrade pip
+
+RUN mkdir -p /data/runfolders
+WORKDIR /opt/
+RUN git clone -b dev https://github.com/klinsek/arteria-runfolder.git
+
+WORKDIR /opt/arteria-runfolder
+# Install requirements needed by arteria-runfolder
+RUN pip install -r requirements/prod .
+# Start server on port 999
+
+ENTRYPOINT ["runfolder-ws","--port","9999","--configroot","./config/"]
+
+
