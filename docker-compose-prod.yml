@@ -6,4 +6,4 @@ services:
       dockerfile: dockerfile/prod
     image: smeds/arteria-runfolder:1.0
     volumes:
-      -
+      - ./runfolders:/data/runfolders

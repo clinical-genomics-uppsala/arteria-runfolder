@@ -28,6 +28,6 @@ WORKDIR /opt/arteria-runfolder
 RUN pip install -r requirements/prod .
 # Start server on port 999
 
-ENTRYPOINT ["runfolder-ws","--port","9999","--configroot","./config/"]
+ENTRYPOINT ["runfolder-ws","--port","10800","--configroot","./config/"]
 
 
