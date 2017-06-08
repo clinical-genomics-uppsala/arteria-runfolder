@@ -1,0 +1,9 @@
+version: '2'
+services:
+  runfolder:
+    build:
+      context: .
+      dockerfile: dockerfile/prod
+    image: smeds/arteria-runfolder:1.0
+    volumes:
+      -
